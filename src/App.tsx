@@ -1,12 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-import { Repo } from "./Pages/Repo";
-import { Repos } from "./Pages/Repos";
+import GlobalStyles from "./styles/GlobalStyles";
 
-export function App() {
+import Layout from "./components/Layout";
+import { ThemeProvider } from "styled-components";
+import dark from "./styles/themes/dark";
+import light from "./styles/themes/light";
+import Dashboard from "./pages/Dashboard";
+import Store from "./pages/Store";
+
+const App: React.FC = () => {
   return (
-    <Routes>
-      <Route  path="/" element={<Repos />} />
-      <Route  path="/repos/*" element={<Repo />} />
-    </Routes>
-  )
-}
+    <ThemeProvider theme={dark}>
+      <GlobalStyles />
+      <Layout>
+        <Store />
+      </Layout>
+    </ThemeProvider>
+  );
+};
+
+export default App;
